@@ -1,0 +1,42 @@
+/**index.wxss**/
+.wrap{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+	padding: 0;
+	margin: 0;
+	background-color: #55e619
+}
+.jishiqi{
+	width: 70vw; 
+	height: 15vh; 
+	background-color: #fff;
+	border-radius: 10px;
+	margin: 15vh auto
+}
+.jishiqi>div{
+  display: block;
+  width:100%;
+  height: 100%;
+  text-align: center;
+  line-height: 15vh;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.btn{
+	width: 40vw; 
+	height: 40vw;
+	background-color: #f3f1d7;
+	border-radius: 50%;
+	line-height: 40vw;
+	text-align: center;
+	margin: 20vh auto;
+	font-size: 24px;
+	font-weight: 900;
+    color: #757248;
+    white-space: nowrap;
+    position: relative;
+    letter-spacing: .1em;
+}

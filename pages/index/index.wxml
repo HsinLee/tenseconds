@@ -1,0 +1,17 @@
+<!--index.wxml-->
+<view class='wrap'>
+<view id="container" class="jishiqi">
+	<div>
+		<span>{{one}}</span>
+		<span>{{two}}</span>
+		:
+		<span>{{three}}</span>
+		<span>{{four}}</span>
+	</div>
+
+
+</view>
+<view bindtouchstart="start" class="btn">
+	{{btn}}
+</view>
+</view>
