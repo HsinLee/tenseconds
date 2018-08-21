@@ -24,15 +24,53 @@ Page({
       this.setData({
         btn: "开始"
       })
+      this.getEnd();
       clearTimeout(this.timer);
     }else{
       this.data.flag = true;
       this.setData({
-        btn: "停止"
+        btn: "停止",
+        one: 0,
+        two: 0,
+        three: 0,
+        four: 0,
       })
+      this.getStart();
       this.timecount();
     }
     
+  },
+  getEnd:function(){
+    console.log(this.data.one)
+    if (this.data.one == 1 && this.data.two == 0 && this.data.three == 0 && this.data.four==0){
+      var issuc = true;
+    }else{
+      var issuc = false;
+    }
+    wx.request({
+      url: 'https://test.com/onLogin',
+      data: {
+        order_id: "res.code",
+        score:'',
+        success: issuc
+      },
+      success: function (data) {
+        
+      }
+    })
+  },
+  getStart: function(){
+    wx.request({
+      url: 'https://test.com/onLogin',
+      data: {},
+      success: function (data) {
+        if (data.ErrNo == 0) {
+          me.setData({
+            UserGameDaily: data.UserGameDaily
+          })
+        }
+      }
+    })
   },
   end: function () {
     this.data.flag=false;
@@ -123,6 +161,9 @@ Page({
         }
       })
     }
+  },
+  UserGameDaily:function(){
+    var me = this;
   },
   getUserInfo: function(e) {
     app.globalData.userInfo = e.detail.userInfo
