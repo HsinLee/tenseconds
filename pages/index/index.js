@@ -5,6 +5,8 @@ const app = getApp()
 Page({
   data: {
     motto: 'Hello World',
+    totaltimes:3,
+    UserGameDaily:{},
     userInfo: {},
     hasUserInfo: false,
     one: 0,
@@ -71,20 +73,28 @@ Page({
     })
   },
   onLoad: function () {
+    var me = this;
     wx.login({
       success: function (res) {
         console.log(res.code)
-        // if (res.code) {
-          //发起网络请求
-        //   wx.request({
-        //     url: 'https://test.com/onLogin',
-        //     data: {
-        //       code: res.code
-        //     }
-        //   })
-        // } else {
-        //   console.log('登录失败！' + res.errMsg)
-        // }
+        if (res.code) {
+          //起网络请求
+          wx.request({
+            url: 'https://test.com/onLogin',
+            data: {
+              code: res.code
+            },
+            success:function(data){
+              if(data.ErrNo==0){
+                me.setData({
+                  UserGameDaily: data.UserGameDaily
+                })
+              }
+            }
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
       }
     });
     if (app.globalData.userInfo) {
